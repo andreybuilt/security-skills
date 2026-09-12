@@ -59,7 +59,7 @@ Copy each skill directory into wherever Claude Code loads skills from on your se
 commonly `~/.claude/skills/` for a user-level install or `.claude/skills/` inside a project:
 
 ```bash
-git clone https://github.com/<your-fork>/security-review-and-skill-audit
+git clone https://github.com/andreybuilt/security-skills
 cp -r security-review-and-skill-audit/security-review ~/.claude/skills/
 cp -r security-review-and-skill-audit/skill-audit ~/.claude/skills/
 ```
