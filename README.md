@@ -1,4 +1,4 @@
-# security-skills
+# AB.Agentic Security Skills
 
 Two Claude Code skills that vet what an agent is asked to trust: the code it reviews, and
 the instructions it runs under.
