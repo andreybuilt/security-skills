@@ -229,8 +229,9 @@ fi
 echo
 echo "== no leaked identifiers =="
 
-# The username is matched as a whole word. In CI it is "runner", and a bare substring failed
-# the build on the ordinary phrase "self-hosted runners" in the CI/CD checklist.
+# The username is matched as a whole word. The CI account name is an ordinary English word, and
+# as a bare substring it failed the build on a plural of that word in the CI/CD checklist. Do not
+# write the name here: this sweep covers this file, and the first draft of this comment failed it.
 LEAK_RE="\b$(id -un)\b|@gmail\.|@icloud\.|@outlook\.|${HOME}"
 [ -n "${GUARD_LEAK_RE:-}" ] && LEAK_RE="${LEAK_RE}|${GUARD_LEAK_RE}"
 if [ -n "${GUARD_LEAK_TERMS_FILE:-}" ] && [ -r "${GUARD_LEAK_TERMS_FILE}" ]; then
