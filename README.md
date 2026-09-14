@@ -1,5 +1,7 @@
 # AB.Agentic Security Skills
 
+[![tests](https://github.com/andreybuilt/security-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/andreybuilt/security-skills/actions/workflows/tests.yml)
+
 Two Claude Code skills that vet what an agent is asked to trust: the code it reviews, and
 the instructions it runs under. One zero-dependency scanner you can run on its own, and a test
 suite that has to prove the scanner fires **and** stays quiet.

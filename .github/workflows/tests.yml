@@ -1,0 +1,29 @@
+name: tests
+
+# Runs the same suite a reader runs after cloning: scanner syntax, the eight malicious and
+# eight benign fixtures, both plant-then-remove cases, the self-scan and the leak sweep.
+# Nothing here is CI-only, so a green check means ./tests/run-all.sh works off my machine.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# The suite reads and runs tests. It writes nothing, so the token gets read access to the
+# contents and nothing else, stated here rather than inherited from an account default.
+permissions:
+  contents: read
+
+jobs:
+  suite:
+    runs-on: ubuntu-latest
+    steps:
+      # Pinned to the SHA v4 resolved to, the same pin agent-guardrails carries. A floating
+      # tag runs whatever that tag points at today.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: python3 version in use
+        run: python3 --version
+
+      - name: run the full suite
+        run: ./tests/run-all.sh

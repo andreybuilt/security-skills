@@ -229,7 +229,9 @@ fi
 echo
 echo "== no leaked identifiers =="
 
-LEAK_RE="$(id -un)|@gmail\.|@icloud\.|@outlook\.|${HOME}"
+# The username is matched as a whole word. In CI it is "runner", and a bare substring failed
+# the build on the ordinary phrase "self-hosted runners" in the CI/CD checklist.
+LEAK_RE="\b$(id -un)\b|@gmail\.|@icloud\.|@outlook\.|${HOME}"
 [ -n "${GUARD_LEAK_RE:-}" ] && LEAK_RE="${LEAK_RE}|${GUARD_LEAK_RE}"
 if [ -n "${GUARD_LEAK_TERMS_FILE:-}" ] && [ -r "${GUARD_LEAK_TERMS_FILE}" ]; then
   EXTRA="$(grep -vE '^\s*(#|$)' "$GUARD_LEAK_TERMS_FILE" | paste -sd '|' -)"
